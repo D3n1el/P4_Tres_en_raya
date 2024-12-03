@@ -12,24 +12,42 @@ public class Tres_en_raya {
 		Scanner s = new Scanner(System.in);
 		Random r = new Random(); 
 		
+		boolean casillasRellenadas = false;
 		
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
+		char[][] posiciones = {{'_', '_', '_'},
+							   {'_', '_', '_'},	
+							   {'_', '_', '_'}};	
 		
 		for (int i = 0; i < 2; i++) {
 			System.out.print("Jugador " + (i + 1) + ", ingresa tu nombre: ");
 				nombres[i] = s.nextLine();
 		}
 		
-		int jugadaInicial = r.nextInt(2) + 1; //Genera un numero entre 1 y 2 de forma aleatoria
+		int ji = r.nextInt(2) + 1; //Genera un numero entre 1 y 2 de forma aleatoria.  ji significa JugadaInicial
 		
 		//Dependiendo del número generado, el programa informa de que jugador empieza.
-		if (jugadaInicial == 1) {
+		if (ji == 1) {
 			System.out.print("Empieza el jugador " + nombres[0]);
-		} else if (jugadaInicial == 2) {
+		} else if (ji == 2) {
 			System.out.print("Empieza el jugador " + nombres[1]);
 		}
 		
-		
+		while (!casillasRellenadas) {
+			
+			for (int i = ji; i < 2; i++) {
+				
+				for (int ii = 0; i < posiciones.length; i++) {
+					for (int j = 0; j < posiciones.length; j++) {
+						if (posiciones[j][i] == '_') {
+							casillasRellenadas = true;
+						}
+					}
+				}
+				
+			}
+			
+		}
 		
 	}
 
