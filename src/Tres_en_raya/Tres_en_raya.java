@@ -37,6 +37,23 @@ public class Tres_en_raya {
 			
 			for (int i = ji; i < 2; i++) {
 				
+				System.out.println();
+				
+				if (ji == 0) {
+					System.out.print("Turno para el jugador " + nombres[0]);
+				} else if (ji == 1) {
+					System.out.print("Turno para el jugador " + nombres[1]);
+				}
+				
+				System.out.print("Visualización de la tabla");
+				
+				for (int ii = 0; i < posiciones.length; i++) {
+					for (int j = 0; j < posiciones.length; j++) {
+						System.out.print(posiciones[j][i] + " ");
+					}
+					System.out.println();
+				}
+				
 				for (int ii = 0; i < posiciones.length; i++) {
 					for (int j = 0; j < posiciones.length; j++) {
 						if (posiciones[j][i] == '_') {
