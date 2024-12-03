@@ -2,6 +2,7 @@ package Tres_en_raya;
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;  
 
 public class Tres_en_raya {
 
@@ -9,6 +10,7 @@ public class Tres_en_raya {
 		// TODO Auto-generated method stub
 		
 		Scanner s = new Scanner(System.in);
+		Random r = new Random();
 		
 		String[] nombres = {"", ""};
 		
@@ -17,7 +19,13 @@ public class Tres_en_raya {
 				nombres[i] = s.nextLine();
 		}
 		
+		int jugadaInicial = r.nextInt(2) + 1;
 		
+		if (jugadaInicial == 1) {
+			System.out.print("Empieza el jugador " + nombres[0]);
+		} else if (jugadaInicial == 2) {
+			System.out.print("Empieza el jugador " + nombres[1]);
+		}
 		
 	}
 
