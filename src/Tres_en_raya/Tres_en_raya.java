@@ -12,7 +12,8 @@ public class Tres_en_raya {
 		Scanner s = new Scanner(System.in);
 		Random r = new Random(); 
 		
-		boolean casillasRellenadas = false;
+		boolean casillasRellenadas = false; //Indica si se han rellenado todas las casillas.
+		boolean primeraPartida = true; //Indica si es la primera partida
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
@@ -36,7 +37,11 @@ public class Tres_en_raya {
 		
 		while (!casillasRellenadas) {
 			
-			for (int i = 0; i < 2; i++) {
+			if (!primeraPartida) {ji = 0;} //Esta condición permite que en la primera partida empieze un jugador al azar i que, después, puedan seguir jugando el resto de jugadores.
+			
+			for (int i = ji; i < 2; i++) {
+				
+				primeraPartida = false;
 				
 				System.out.println();
 				System.out.println();
@@ -72,9 +77,9 @@ public class Tres_en_raya {
 				} while (c != 1 && c != 2 && c != 3);
 				
 				if (i == 0) {
-					posiciones[f - 1][c - 1] = 'O';
+					posiciones[f - 1][c - 1] = 'O'; //Si es el turno del jugador 1, marca la casilla vacía con O
 				} else if (i == 1) {
-					posiciones[f - 1][c - 1] = 'X';
+					posiciones[f - 1][c - 1] = 'X'; //Si es el turno del jugador 2, marca la casilla vacía con X
 				}
 				
 					
@@ -83,11 +88,13 @@ public class Tres_en_raya {
 						if (posiciones[ii][j] != '□') {
 							casillasRellenadas = true;
 						}
+						if (posiciones[ii][j] == '□') {
+							casillasRellenadas = false;
+						}
 					}
 				}
-				
-				i = 0; //El índice debe volver a 0. Si no, aunque haya un bucle infinito, el programa se cerrará, porque no consigue reiniciar el indice para que los jugadores puedan jugar de nuevo.
 			}
+		
 		} 
 	}
 }
