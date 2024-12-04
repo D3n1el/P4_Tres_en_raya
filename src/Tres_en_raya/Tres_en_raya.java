@@ -14,6 +14,8 @@ public class Tres_en_raya {
 		
 		boolean casillasRellenadas = false; //Indica si se han rellenado todas las casillas.
 		boolean primeraPartida = true; //Indica si es la primera partida
+		boolean ganaJ1 = false; //Indica si el jugador 1 ha ganado.
+		boolean ganaJ2 = false; //Indica si el jugador 2 ha ganado.
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
@@ -86,6 +88,42 @@ public class Tres_en_raya {
 				} else if (i == 1) {
 					posiciones[f - 1][c - 1] = 'X'; //Si es el turno del jugador 2, marca la casilla vacía con X
 				}
+				
+				for (int ii = 0; ii < posiciones.length; ii++) {
+						
+						//Revisa si se han alineado X o O horizontalmente
+						if (posiciones[ii][0] == 'O' && posiciones[ii][1] == 'O' && posiciones[ii][2] == 'O') {
+							ganaJ1 = true;
+						}
+						if (posiciones[ii][0] == 'X' && posiciones[ii][1] == 'X' && posiciones[ii][2] == 'X') {
+							ganaJ2 = true;
+						}
+						
+						//Revisa si se han alineado X o O verticalmente
+						if (posiciones[0][ii] == 'O' && posiciones[1][ii] == 'O' && posiciones[2][ii] == 'O') {
+							ganaJ1 = true;
+						}
+						if (posiciones[0][ii] == 'X' && posiciones[1][ii] == 'X' && posiciones[2][ii] == 'X') {
+							ganaJ2 = true;
+						}
+						
+						//Revisa si se han alineado X o O diagonalmente
+						if (posiciones[0][0] == 'O' && posiciones[1][1] == 'O' && posiciones[2][2] == 'O') {
+							ganaJ1 = true;
+						}
+						if (posiciones[0][0] == 'X' && posiciones[1][1] == 'X' && posiciones[2][2] == 'X') {
+							ganaJ2 = true;
+						}
+						
+						//Revisa si se han alineado X o O diagonalmente en sentido opuesto
+						if (posiciones[2][0] == 'O' && posiciones[1][1] == 'O' && posiciones[0][2] == 'O') {
+							ganaJ1 = true;
+						}
+						if (posiciones[2][0] == 'X' && posiciones[1][1] == 'X' && posiciones[0][2] == 'X') {
+							ganaJ2 = true;
+						}
+						
+				}
 					
 				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
@@ -97,8 +135,9 @@ public class Tres_en_raya {
 						}
 					}
 				}
+				
 			}
-		
+			
 		} 
 	}
 }
