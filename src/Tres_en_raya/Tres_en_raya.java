@@ -16,9 +16,9 @@ public class Tres_en_raya {
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
-		char[][] posiciones = {{'_', '_', '_'},
-							   {'_', '_', '_'},	
-							   {'_', '_', '_'}};	
+		char[][] posiciones = {{'□', '□', '□'},
+							   {'□', '□', '□'},	
+							   {'□', '□', '□'}};	
 		
 		for (int i = 0; i < 2; i++) {
 			System.out.print("Jugador " + (i + 1) + ", ingresa tu nombre: ");
@@ -36,14 +36,14 @@ public class Tres_en_raya {
 		
 		while (!casillasRellenadas) {
 			
-			for (int i = ji; i <= 2; i++) {
+			for (int i = 0; i < 2; i++) {
 				
 				System.out.println();
 				System.out.println();
 				
-				if (ji == 0) {
+				if (i == 0) {
 					System.out.println("Turno para el jugador " + nombres[0]);
-				} else if (ji == 1) {
+				} else if (i == 1) {
 					System.out.println("Turno para el jugador " + nombres[1]);
 				}
 				
@@ -52,7 +52,7 @@ public class Tres_en_raya {
 				
 				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
-						System.out.print(posiciones[j][i] + " ");
+						System.out.print(posiciones[ii][j] + " ");
 					}
 					System.out.println();
 				}
@@ -70,19 +70,24 @@ public class Tres_en_raya {
 					c = s.nextInt();
 					if (c != 1 && c != 2 && c != 3) {System.out.println("¡NUMERO INVÁLIDO!");}
 				} while (c != 1 && c != 2 && c != 3);
+				
+				if (i == 0) {
+					posiciones[f - 1][c - 1] = 'O';
+				} else if (i == 1) {
+					posiciones[f - 1][c - 1] = 'X';
+				}
+				
 					
-				for (int ii = 0; i < posiciones.length; ii++) {
+				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
-						if (posiciones[j][i] == '_') {
+						if (posiciones[ii][j] != '□') {
 							casillasRellenadas = true;
 						}
 					}
 				}
 				
+				i = 0; //El índice debe volver a 0. Si no, aunque haya un bucle infinito, el programa se cerrará, porque no consigue reiniciar el indice para que los jugadores puedan jugar de nuevo.
 			}
-			
-		}
-		
+		} 
 	}
-
 }
