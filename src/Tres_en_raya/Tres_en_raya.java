@@ -62,26 +62,30 @@ public class Tres_en_raya {
 					System.out.println();
 				}
 				
-				do { //Mientras el jugador ponga un numero inválido, el programa seguirá pidiendo indefinidamente que ponga un numero correcto.
-					System.out.print("¿Que fila quieres seleccionar (Opciones: 1, 2 ,3)? "); //Pide al usuario poner un numero del 1 al 3.
-					f = s.nextInt();
-					if (f != 1 && f != 2 && f != 3) {System.out.println("¡NUMERO INVÁLIDO!");} //En caso de poner un numero que no sea 1, ni 2, ni 3, informa de que el numero no es válido.
-				} while (f != 1 && f != 2 && f != 3); //Si el jugador ha puesto 1, 2 o 3, entyonces el programa termina el bucle, dado que el numero puesto es válido.
+				while (true) {
+					do { //Mientras el jugador ponga un numero inválido, el programa seguirá pidiendo indefinidamente que ponga un numero correcto.
+						System.out.print("¿Que fila quieres seleccionar (Opciones: 1, 2 ,3)? "); //Pide al usuario poner un numero del 1 al 3.
+						f = s.nextInt();
+						if (f != 1 && f != 2 && f != 3) {System.out.println("¡NUMERO INVÁLIDO!");} //En caso de poner un numero que no sea 1, ni 2, ni 3, informa de que el numero no es válido.
+					} while (f != 1 && f != 2 && f != 3); //Si el jugador ha puesto 1, 2 o 3, entyonces el programa termina el bucle, dado que el numero puesto es válido.
+						
+					System.out.println();
+						
+					do {
+						System.out.print("¿Qué columna quieres seleccionar (Opciones: 1, 2, 3)? ");
+						c = s.nextInt();
+						if (c != 1 && c != 2 && c != 3) {System.out.println("¡NUMERO INVÁLIDO!");}
+					} while (c != 1 && c != 2 && c != 3);
 					
-				System.out.println();
-					
-				do {
-					System.out.print("¿Qué columna quieres seleccionar (Opciones: 1, 2, 3)? ");
-					c = s.nextInt();
-					if (c != 1 && c != 2 && c != 3) {System.out.println("¡NUMERO INVÁLIDO!");}
-				} while (c != 1 && c != 2 && c != 3);
+					if (posiciones[f - 1][c - 1] == '□') {break;}
+					System.out.println("YA SE HA JUGADO ESA SELECCIÓN");
+				}
 				
 				if (i == 0) {
 					posiciones[f - 1][c - 1] = 'O'; //Si es el turno del jugador 1, marca la casilla vacía con O
 				} else if (i == 1) {
 					posiciones[f - 1][c - 1] = 'X'; //Si es el turno del jugador 2, marca la casilla vacía con X
 				}
-				
 					
 				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
