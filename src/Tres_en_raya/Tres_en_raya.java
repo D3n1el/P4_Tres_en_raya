@@ -24,37 +24,39 @@ public class Tres_en_raya {
 				nombres[i] = s.nextLine();
 		}
 		
-		int ji = r.nextInt(2) + 1; //Genera un numero entre 1 y 2 de forma aleatoria.  ji significa JugadaInicial
+		int ji = r.nextInt(2); //Genera un numero entre 0 y 1 de forma aleatoria.  ji significa JugadaInicial
 		
 		//Dependiendo del número generado, el programa informa de que jugador empieza.
-		if (ji == 1) {
+		if (ji == 0) {
 			System.out.print("Empieza el jugador " + nombres[0]);
-		} else if (ji == 2) {
+		} else if (ji == 1) {
 			System.out.print("Empieza el jugador " + nombres[1]);
 		}
 		
 		while (!casillasRellenadas) {
 			
-			for (int i = ji; i < 2; i++) {
+			for (int i = ji; i <= 2; i++) {
 				
+				System.out.println();
 				System.out.println();
 				
 				if (ji == 0) {
-					System.out.print("Turno para el jugador " + nombres[0]);
+					System.out.println("Turno para el jugador " + nombres[0]);
 				} else if (ji == 1) {
-					System.out.print("Turno para el jugador " + nombres[1]);
+					System.out.println("Turno para el jugador " + nombres[1]);
 				}
 				
-				System.out.print("Visualización de la tabla");
+				System.out.println();
+				System.out.println("Visualización de la tabla");
 				
-				for (int ii = 0; i < posiciones.length; i++) {
+				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
 						System.out.print(posiciones[j][i] + " ");
 					}
 					System.out.println();
 				}
 				
-				for (int ii = 0; i < posiciones.length; i++) {
+				for (int ii = 0; i < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
 						if (posiciones[j][i] == '_') {
 							casillasRellenadas = true;
