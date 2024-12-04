@@ -18,6 +18,7 @@ public class Tres_en_raya {
 		boolean ganaJ2 = false; //Indica si el jugador 2 ha ganado.
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
+		int rev = 0; //Indica si va a haber revancha.
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
 		char[][] posiciones = {{'□', '□', '□'},
 							   {'□', '□', '□'},	
@@ -37,9 +38,18 @@ public class Tres_en_raya {
 			System.out.print("Empieza el jugador " + nombres[1]);
 		}
 		
-		while (!casillasRellenadas) {
+		while (true) {
 			
-			if (!primeraPartida) {ji = 0;} //Esta condición permite que en la primera partida empieze un jugador al azar i que, después, puedan seguir jugando el resto de jugadores.
+			if (rev == 1) {
+				for (int i = 0; i < posiciones.length; i++) {
+					for (int ii = 0; ii < posiciones.length; ii++) {
+						posiciones[i][ii] = '□';
+					}
+				}
+				casillasRellenadas = false;
+				}
+			
+			if (!primeraPartida) {ji = 0;} //Esta condición permite que en la primera partida empieze un jugador al azar y que, después, puedan seguir jugando el resto de jugadores.
 			
 			for (int i = ji; i < 2; i++) {
 				
@@ -124,7 +134,6 @@ public class Tres_en_raya {
 						}
 						
 				}
-					
 				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
 						if (posiciones[ii][j] != '□') {
@@ -135,9 +144,14 @@ public class Tres_en_raya {
 						}
 					}
 				}
+				if (casillasRellenadas) {
+					System.out.print(nombres[i] + ", ¿Revancha? (0 = Sí | 1 = No)");
+					rev = s.nextInt();
+				}
+				if (ganaJ1 || ganaJ2 || rev == 1) {break;}
 				
 			}
-			
-		} 
+			if (ganaJ1 || ganaJ2 || rev == 1) {break;}
+		}
 	}
 }
