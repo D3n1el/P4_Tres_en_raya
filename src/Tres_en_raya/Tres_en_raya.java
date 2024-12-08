@@ -171,7 +171,20 @@ public class Tres_en_raya {
 				if (ganaJ1 || ganaJ2 || rev == 0) {break;}
 				
 			}
-			//if (ganaJ1 || ganaJ2 || rev == 1) {break;}
+			if (ganaJ1 || ganaJ2 || rev == 0) {break;}
+			
 		}
+		for (int ii = 0; ii < posiciones.length; ii++) {
+			for (int j = 0; j < posiciones.length; j++) {
+				System.out.print(posiciones[ii][j] + " ");
+			}
+			System.out.println();
+		}
+		if (ganaJ1) {System.out.println(nombres[0] + " ¡Has ganado!");}
+		
+		if (ganaJ2) {System.out.println(nombres[1] + " ¡Has ganado!");}
+		
+		if (rev == 0) {System.out.println("El juego ha concluido en empate");}
+		
 	}
 }
