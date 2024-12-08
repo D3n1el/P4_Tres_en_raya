@@ -19,11 +19,11 @@ public class Tres_en_raya {
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
 		int rev = 2; //Indica si va a haber revancha.
-		int revJ1 = 2;
-		int revJ2 = 2;
-		int contRellenados = 0;
+		int revJ1 = 2; //Indica que quiere hacer el jugador 1 después de finalizar una partida.
+		int revJ2 = 2; //Indica que quiere hacer el jugador 2 después de finalizar una partida.
+		int contRellenados = 0; //Cuenmta la cantidad total de casillas rellenadas con X o O.
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
-		char[][] posiciones = {{'□', '□', '□'},
+		char[][] posiciones = {{'□', '□', '□'}, //Define las casillas
 							   {'□', '□', '□'},	
 							   {'□', '□', '□'}};	
 		
@@ -36,32 +36,32 @@ public class Tres_en_raya {
 		
 		//Dependiendo del número generado, el programa informa de que jugador empieza.
 		if (ji == 0) {
-			System.out.print("Empieza el jugador " + nombres[0]);
+			System.out.print("Empieza el jugador " + nombres[0]); //Muestra el nombre del jugador 1
 		} else if (ji == 1) {
-			System.out.print("Empieza el jugador " + nombres[1]);
+			System.out.print("Empieza el jugador " + nombres[1]); //Muestra el nombre del jugador 2
 		}
 		
-		while (true) {
+		while (true) { //Permite repetir la partida de forma infinita
 			
-			if (rev == 1) {
+			if (rev == 1) { //Si se ha escogido revancha y, por lo tanto, "rev" se incrementa en 1, se reestablecen todas las casillas con □
 				for (int i = 0; i < posiciones.length; i++) {
 					for (int ii = 0; ii < posiciones.length; ii++) {
 						posiciones[i][ii] = '□';
 					}
 				}
-				casillasRellenadas = false;
+				casillasRellenadas = false; //Cambia el estado del boolean "casillasRellenadas"
 			}
 			
 			if (!primeraPartida) {ji = 0;} //Esta condición permite que en la primera partida empieze un jugador al azar y que, después, puedan seguir jugando el resto de jugadores.
 			
-			for (int i = ji; i < 2; i++) {
+			for (int i = ji; i < 2; i++) { //Reliza los turnos de cada jugador
 				
-				primeraPartida = false;
+				primeraPartida = false; //Como ya se han realizado todas las  condiciones con este boolean, lo dejamos en "false", porque ya ha pasado la primera partida. 
 				
 				System.out.println();
 				System.out.println();
 				
-				if (i == 0) {
+				if (i == 0) { //Indica quién tiene el turno.
 					System.out.println("Turno para el jugador " + nombres[0]);
 				} else if (i == 1) {
 					System.out.println("Turno para el jugador " + nombres[1]);
@@ -70,14 +70,14 @@ public class Tres_en_raya {
 				System.out.println();
 				System.out.println("Visualización de la tabla");
 				
-				for (int ii = 0; ii < posiciones.length; ii++) {
+				for (int ii = 0; ii < posiciones.length; ii++) { //Visualiza el estado de cada casilla de la tabla
 					for (int j = 0; j < posiciones.length; j++) {
 						System.out.print(posiciones[ii][j] + " ");
 					}
 					System.out.println();
 				}
 				
-				while (true) {
+				while (true) { //Bucle que impide continuar si se ha querido usar una posición que ya se han usado anteriormente.
 					do { //Mientras el jugador ponga un numero inválido, el programa seguirá pidiendo indefinidamente que ponga un numero correcto.
 						System.out.print("¿Que fila quieres seleccionar (Opciones: 1, 2 ,3)? "); //Pide al usuario poner un numero del 1 al 3.
 						f = s.nextInt();
@@ -86,14 +86,14 @@ public class Tres_en_raya {
 						
 					System.out.println();
 						
-					do {
-						System.out.print("¿Qué columna quieres seleccionar (Opciones: 1, 2, 3)? ");
+					do { //Mientras el jugador ponga un numero inválido, el programa seguirá pidiendo indefinidamente que ponga un numero correcto.
+						System.out.print("¿Qué columna quieres seleccionar (Opciones: 1, 2, 3)? "); //Pide al usuario poner un numero del 1 al 3.
 						c = s.nextInt();
-						if (c != 1 && c != 2 && c != 3) {System.out.println("¡NUMERO INVÁLIDO!");}
-					} while (c != 1 && c != 2 && c != 3);
+						if (c != 1 && c != 2 && c != 3) {System.out.println("¡NUMERO INVÁLIDO!");} //En caso de poner un numero que no sea 1, ni 2, ni 3, informa de que el numero no es válido.
+					} while (c != 1 && c != 2 && c != 3); //Si el jugador ha puesto 1, 2 o 3, entyonces el programa termina el bucle, dado que el numero puesto es válido.
 					
-					if (posiciones[f - 1][c - 1] == '□') {break;}
-					System.out.println("YA SE HA JUGADO ESA SELECCIÓN");
+					if (posiciones[f - 1][c - 1] == '□') {break;} //Si se ha seleccionado una posición vacía, entonces sale del bucle.
+					System.out.println("YA SE HA JUGADO ESA SELECCIÓN"); //Si no, sale un aviso de que ya se ha utilizado esa posición.
 				}
 				
 				if (i == 0) {
