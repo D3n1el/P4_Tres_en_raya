@@ -18,7 +18,7 @@ public class Tres_en_raya {
 		boolean ganaJ2 = false; //Indica si el jugador 2 ha ganado.
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
-		int rev = 0; //Indica si va a haber revancha.
+		int rev = 2; //Indica si va a haber revancha.
 		int contRellenados = 0;
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
 		char[][] posiciones = {{'□', '□', '□'},
@@ -149,10 +149,10 @@ public class Tres_en_raya {
 					}
 				}
 				if (casillasRellenadas) {
-					System.out.print(nombres[i] + ", ¿Revancha? (0 = Sí | 1 = No)");
+					System.out.print(nombres[i] + ", ¿Revancha? (0 = No | 1 = Sí)");
 					rev = s.nextInt();
 				}
-				if (ganaJ1 || ganaJ2 || rev == 1) {break;}
+				if (ganaJ1 || ganaJ2 || rev == 0) {break;}
 				
 			}
 			//if (ganaJ1 || ganaJ2 || rev == 1) {break;}
