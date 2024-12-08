@@ -19,6 +19,7 @@ public class Tres_en_raya {
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
 		int rev = 0; //Indica si va a haber revancha.
+		int contRellenados = 0;
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
 		char[][] posiciones = {{'□', '□', '□'},
 							   {'□', '□', '□'},	
@@ -47,7 +48,7 @@ public class Tres_en_raya {
 					}
 				}
 				casillasRellenadas = false;
-				}
+			}
 			
 			if (!primeraPartida) {ji = 0;} //Esta condición permite que en la primera partida empieze un jugador al azar y que, después, puedan seguir jugando el resto de jugadores.
 			
@@ -134,13 +135,16 @@ public class Tres_en_raya {
 						}
 						
 				}
+				
+				contRellenados = 0;
+				
 				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
 						if (posiciones[ii][j] != '□') {
-							casillasRellenadas = true;
+							contRellenados++;
 						}
-						if (posiciones[ii][j] == '□') {
-							casillasRellenadas = false;
+						if (contRellenados == 9){
+							casillasRellenadas = true;
 						}
 					}
 				}
@@ -151,7 +155,7 @@ public class Tres_en_raya {
 				if (ganaJ1 || ganaJ2 || rev == 1) {break;}
 				
 			}
-			if (ganaJ1 || ganaJ2 || rev == 1) {break;}
+			//if (ganaJ1 || ganaJ2 || rev == 1) {break;}
 		}
 	}
 }
