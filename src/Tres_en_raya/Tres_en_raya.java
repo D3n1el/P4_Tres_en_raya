@@ -19,6 +19,8 @@ public class Tres_en_raya {
 		int f = 0; //Define la fila seleccionada por el jugador
 		int c = 0; //Define la columna seleccionada por el jugador
 		int rev = 2; //Indica si va a haber revancha.
+		int revJ1 = 2;
+		int revJ2 = 2;
 		int contRellenados = 0;
 		String[] nombres = {"", ""}; //Delcaración del array donde se introducen los nombres de los jugadores
 		char[][] posiciones = {{'□', '□', '□'},
@@ -149,9 +151,23 @@ public class Tres_en_raya {
 					}
 				}
 				if (casillasRellenadas) {
-					System.out.print(nombres[i] + ", ¿Revancha? (0 = No | 1 = Sí)");
-					rev = s.nextInt();
+					System.out.println("¡EMAPTE ENTRE AMBOS JUGADORES!");
+					do {
+						System.out.print(nombres[0] + ", ¿Quieres revancha? (0 = No | 1 = Sí)");
+						revJ1 = s.nextInt();
+						if (revJ1 != 0 && revJ1 != 1) {System.out.println("¡NUMERO INVÁLIDO!");};
+					} while (revJ1 != 0 && revJ1 != 1);
+					do {
+						System.out.print(nombres[1] + ", ¿Quieres revancha? (0 = No | 1 = Sí)");
+						revJ2 = s.nextInt();
+						if (revJ2 != 0 && revJ2 != 1) {System.out.println("¡NUMERO INVÁLIDO!");};
+					} while (revJ2 != 0 && revJ2 != 1);
+					
 				}
+				if (revJ1 == 1 && revJ2 == 1) {
+					rev++;
+				} else if (casillasRellenadas){ rev = 0; }
+
 				if (ganaJ1 || ganaJ2 || rev == 0) {break;}
 				
 			}
