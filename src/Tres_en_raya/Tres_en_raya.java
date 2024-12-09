@@ -1,3 +1,4 @@
+
 package Tres_en_raya;
 
 import java.util.Scanner;
@@ -146,7 +147,7 @@ public class Tres_en_raya {
 						if (posiciones[ii][j] != '□') {
 							contRellenados++;
 						}
-						if (contRellenados == 9){
+						if (contRellenados == 9 && ganaJ1 == false && ganaJ2 == false){
 							casillasRellenadas = true;
 						}
 					}
