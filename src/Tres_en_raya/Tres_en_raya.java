@@ -50,6 +50,7 @@ public class Tres_en_raya {
 					}
 				}
 				casillasRellenadas = false; //Cambia el estado del boolean "casillasRellenadas"
+				rev = 2;
 			}
 			
 			if (!primeraPartida) {ji = 0;} //Esta condición permite que en la primera partida empieze un jugador al azar y que, después, puedan seguir jugando el resto de jugadores.
@@ -165,7 +166,7 @@ public class Tres_en_raya {
 					
 				}
 				if (revJ1 == 1 && revJ2 == 1) {
-					rev++;
+					rev = 1;
 				} else if (casillasRellenadas){ rev = 0; }
 
 				if (ganaJ1 || ganaJ2 || rev == 0) {break;}
