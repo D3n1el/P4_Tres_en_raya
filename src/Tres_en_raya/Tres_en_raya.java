@@ -48,6 +48,8 @@ public class Tres_en_raya {
 				for (int i = 0; i < posiciones.length; i++) {
 					for (int ii = 0; ii < posiciones.length; ii++) {
 						posiciones[i][ii] = '□';
+						revJ1 = 2;
+						revJ2 = 2;
 					}
 				}
 				casillasRellenadas = false; //Cambia el estado del boolean "casillasRellenadas"
@@ -81,7 +83,7 @@ public class Tres_en_raya {
 				
 				while (true) { //Bucle que impide continuar si se ha querido usar una posición que ya se han usado anteriormente.
 					do { //Mientras el jugador ponga un numero inválido, el programa seguirá pidiendo indefinidamente que ponga un numero correcto.
-						System.out.print("¿Que fila quieres seleccionar (Opciones: 1, 2 ,3)? "); //Pide al usuario poner un numero del 1 al 3.
+						System.out.print("¿Que fila quieres seleccionar? (Opciones: 1, 2 ,3) "); //Pide al usuario poner un numero del 1 al 3.
 						f = s.nextInt();
 						if (f != 1 && f != 2 && f != 3) {System.out.println("¡NUMERO INVÁLIDO!");} //En caso de poner un numero que no sea 1, ni 2, ni 3, informa de que el numero no es válido.
 					} while (f != 1 && f != 2 && f != 3); //Si el jugador ha puesto 1, 2 o 3, entyonces el programa termina el bucle, dado que el numero puesto es válido.
@@ -89,7 +91,7 @@ public class Tres_en_raya {
 					System.out.println();
 						
 					do { //Mientras el jugador ponga un numero inválido, el programa seguirá pidiendo indefinidamente que ponga un numero correcto.
-						System.out.print("¿Qué columna quieres seleccionar (Opciones: 1, 2, 3)? "); //Pide al usuario poner un numero del 1 al 3.
+						System.out.print("¿Qué columna quieres seleccionar? (Opciones: 1, 2, 3) "); //Pide al usuario poner un numero del 1 al 3.
 						c = s.nextInt();
 						if (c != 1 && c != 2 && c != 3) {System.out.println("¡NUMERO INVÁLIDO!");} //En caso de poner un numero que no sea 1, ni 2, ni 3, informa de que el numero no es válido.
 					} while (c != 1 && c != 2 && c != 3); //Si el jugador ha puesto 1, 2 o 3, entyonces el programa termina el bucle, dado que el numero puesto es válido.
@@ -155,12 +157,12 @@ public class Tres_en_raya {
 				if (casillasRellenadas) {
 					System.out.println("¡EMAPTE ENTRE AMBOS JUGADORES!");
 					do {
-						System.out.print(nombres[0] + ", ¿Quieres revancha? (0 = No | 1 = Sí)");
+						System.out.print(nombres[0] + ", ¿Quieres revancha? (0 = No | 1 = Sí) ");
 						revJ1 = s.nextInt();
 						if (revJ1 != 0 && revJ1 != 1) {System.out.println("¡NUMERO INVÁLIDO!");};
 					} while (revJ1 != 0 && revJ1 != 1);
 					do {
-						System.out.print(nombres[1] + ", ¿Quieres revancha? (0 = No | 1 = Sí)");
+						System.out.print(nombres[1] + ", ¿Quieres revancha? (0 = No | 1 = Sí) ");
 						revJ2 = s.nextInt();
 						if (revJ2 != 0 && revJ2 != 1) {System.out.println("¡NUMERO INVÁLIDO!");};
 					} while (revJ2 != 0 && revJ2 != 1);
