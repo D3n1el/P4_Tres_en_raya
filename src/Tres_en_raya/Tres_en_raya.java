@@ -109,86 +109,85 @@ public class Tres_en_raya {
 				for (int ii = 0; ii < posiciones.length; ii++) {
 						
 						//Revisa si se han alineado X o O horizontalmente
-						if (posiciones[ii][0] == 'O' && posiciones[ii][1] == 'O' && posiciones[ii][2] == 'O') {
+						if (posiciones[ii][0] == 'O' && posiciones[ii][1] == 'O' && posiciones[ii][2] == 'O') { //Comprueba si se han alineado O
 							ganaJ1 = true;
 						}
-						if (posiciones[ii][0] == 'X' && posiciones[ii][1] == 'X' && posiciones[ii][2] == 'X') {
+						if (posiciones[ii][0] == 'X' && posiciones[ii][1] == 'X' && posiciones[ii][2] == 'X') { //Comprueba si se han alienado X
 							ganaJ2 = true;
 						}
 						
 						//Revisa si se han alineado X o O verticalmente
-						if (posiciones[0][ii] == 'O' && posiciones[1][ii] == 'O' && posiciones[2][ii] == 'O') {
+						if (posiciones[0][ii] == 'O' && posiciones[1][ii] == 'O' && posiciones[2][ii] == 'O') { //Comprueba si se han alineado O
 							ganaJ1 = true;
 						}
-						if (posiciones[0][ii] == 'X' && posiciones[1][ii] == 'X' && posiciones[2][ii] == 'X') {
+						if (posiciones[0][ii] == 'X' && posiciones[1][ii] == 'X' && posiciones[2][ii] == 'X') { //Comprueba si se han alienado X
 							ganaJ2 = true;
 						}
 						
 						//Revisa si se han alineado X o O diagonalmente
-						if (posiciones[0][0] == 'O' && posiciones[1][1] == 'O' && posiciones[2][2] == 'O') {
+						if (posiciones[0][0] == 'O' && posiciones[1][1] == 'O' && posiciones[2][2] == 'O') { //Comprueba si se han alineado O
 							ganaJ1 = true;
 						}
-						if (posiciones[0][0] == 'X' && posiciones[1][1] == 'X' && posiciones[2][2] == 'X') {
+						if (posiciones[0][0] == 'X' && posiciones[1][1] == 'X' && posiciones[2][2] == 'X') { //Comprueba si se han alienado X
 							ganaJ2 = true;
 						}
 						
 						//Revisa si se han alineado X o O diagonalmente en sentido opuesto
-						if (posiciones[2][0] == 'O' && posiciones[1][1] == 'O' && posiciones[0][2] == 'O') {
+						if (posiciones[2][0] == 'O' && posiciones[1][1] == 'O' && posiciones[0][2] == 'O') { //Comprueba si se han alineado O
 							ganaJ1 = true;
 						}
-						if (posiciones[2][0] == 'X' && posiciones[1][1] == 'X' && posiciones[0][2] == 'X') {
+						if (posiciones[2][0] == 'X' && posiciones[1][1] == 'X' && posiciones[0][2] == 'X') { //Comprueba si se han alienado X
 							ganaJ2 = true;
-						}
-						
+						}	
 				}
 				
-				contRellenados = 0;
+				contRellenados = 0; //Renicia el contador de casillas rellenadas
 				
+				//Recorre cada posición de la matriz, y revisa si todas las casillas están rellenadas con X o O.
 				for (int ii = 0; ii < posiciones.length; ii++) {
 					for (int j = 0; j < posiciones.length; j++) {
-						if (posiciones[ii][j] != '□') {
+						if (posiciones[ii][j] != '□') { //Si la casilla difiere de "□" (Es decir, ya se ha rellenado esa posición con X o O), entonces suma 1 al contador de numeros rellenados. 
 							contRellenados++;
 						}
-						if (contRellenados == 9 && ganaJ1 == false && ganaJ2 == false){
+						if (contRellenados == 9 && ganaJ1 == false && ganaJ2 == false){ //Si el numero del contador de rellenados es 9 (La cantidad total de casillas que hay en el juego), el estado de "casillasRellenadas" pasa a verdadero, afirmando así que todas las casillas ya están rellenadas.
 							casillasRellenadas = true;
 						}
 					}
 				}
-				if (casillasRellenadas) {
+				if (casillasRellenadas) { //Lo que ocurre si el estado de "casillasRellenadas" es verdadero
 					System.out.println("¡EMAPTE ENTRE AMBOS JUGADORES!");
-					do {
+					do { //Este "do-while" impide que se pongan numeros inválidos, de forma que siempre se repite este código si el numero introducido se considera inválido.
 						System.out.print(nombres[0] + ", ¿Quieres revancha? (0 = No | 1 = Sí) ");
 						revJ1 = s.nextInt();
-						if (revJ1 != 0 && revJ1 != 1) {System.out.println("¡NUMERO INVÁLIDO!");};
+						if (revJ1 != 0 && revJ1 != 1) {System.out.println("¡NUMERO INVÁLIDO!");}; //Este mensaje sale si se intoduce un numero inválido.
 					} while (revJ1 != 0 && revJ1 != 1);
-					do {
+					do { //Este "do-while" impide que se pongan numeros inválidos, de forma que siempre se repite este código si el numero introducido se considera erróneo.
 						System.out.print(nombres[1] + ", ¿Quieres revancha? (0 = No | 1 = Sí) ");
 						revJ2 = s.nextInt();
-						if (revJ2 != 0 && revJ2 != 1) {System.out.println("¡NUMERO INVÁLIDO!");};
+						if (revJ2 != 0 && revJ2 != 1) {System.out.println("¡NUMERO INVÁLIDO!");}; //Este mensaje sale si se intoduce un numero inválido.
 					} while (revJ2 != 0 && revJ2 != 1);
 					
 				}
-				if (revJ1 == 1 && revJ2 == 1) {
-					rev = 1;
-				} else if (casillasRellenadas){ rev = 0; }
+				if (revJ1 == 1 && revJ2 == 1) { rev = 1; //Si los dos han optado por hacer revancha, la variable "rev" pasa a 1.
+				} else if (casillasRellenadas){ rev = 0; } //Si alguno de los dos ha optado por no hacer revancha, la variable "rev" pasa a 0.
 
-				if (ganaJ1 || ganaJ2 || rev == 0) {break;}
+				if (ganaJ1 || ganaJ2 || rev == 0) {break;} //Si alguno de los jugdores ha ganado o alguno de los jugadores (O ambos) han optado por no hacer revancha, finaliza el bucle de turnos de jugadores.
 				
-			}
-			if (ganaJ1 || ganaJ2 || rev == 0) {break;}
+			} //Final del bucle para hacer los turnos de cada jugador
 			
-		}
-		for (int ii = 0; ii < posiciones.length; ii++) {
+			if (ganaJ1 || ganaJ2 || rev == 0) {break;} //Si alguno de los jugdores ha ganado o alguno de los jugadores (O ambos) han optado por no hacer revancha, finaliza el bucle de repetición de partida en caso de revancha.
+	
+		} //Fin del bucle while-true para repetir la partida en caso de revancha.
+		
+		for (int ii = 0; ii < posiciones.length; ii++) { //Muestra como ha quedado la tabla finalmente, al finalizar la partida.
 			for (int j = 0; j < posiciones.length; j++) {
 				System.out.print(posiciones[ii][j] + " ");
 			}
 			System.out.println();
 		}
-		if (ganaJ1) {System.out.println(nombres[0] + " ¡Has ganado!");}
-		
-		if (ganaJ2) {System.out.println(nombres[1] + " ¡Has ganado!");}
-		
-		if (rev == 0) {System.out.println("El juego ha concluido en empate");}
+		if (ganaJ1) {System.out.println(nombres[0] + " ¡Has ganado!"); //Si ha ganado el jugador 1, sale un mensaje diciendo que ha ganado este mismo. 
+		} else if (ganaJ2) {System.out.println(nombres[1] + " ¡Has ganado!"); //Si ha ganado el jugador 2, sale un mensaje diciendo que ha ganado este mismo. 
+		} else if (rev == 0) {System.out.println("El juego ha concluido en empate");} //Si no ha ganado nadie y no se ha querido hacer revancha, entonces sale un mensaje diciendo que el jugeo ha concluido en empate. 
 		
 	}
 }
