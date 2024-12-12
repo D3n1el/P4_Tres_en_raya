@@ -10,8 +10,8 @@ public class Tres_en_raya {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Scanner s = new Scanner(System.in);
-		Random r = new Random(); 
+		Scanner s = new Scanner(System.in); //Declara el escáner
+		Random r = new Random(); //Declcara el generador de números aleatorios
 		
 		boolean casillasRellenadas = false; //Indica si se han rellenado todas las casillas.
 		boolean primeraPartida = true; //Indica si es la primera partida
@@ -66,9 +66,9 @@ public class Tres_en_raya {
 				System.out.println();
 				
 				if (i == 0) { //Indica quién tiene el turno.
-					System.out.println("Turno para el jugador " + nombres[0]);
+					System.out.println("Turno para el jugador: " + nombres[0] + " (Coloca O)"); //Muestra el nombre del jugador 1 e indica que juega con O
 				} else if (i == 1) {
-					System.out.println("Turno para el jugador " + nombres[1]);
+					System.out.println("Turno para el jugador: " + nombres[1] + " (Coloca X)"); //Muestra el nombre del jugador 2 e indica que juega con X
 				}
 				
 				System.out.println();
@@ -110,34 +110,34 @@ public class Tres_en_raya {
 						
 						//Revisa si se han alineado X o O horizontalmente
 						if (posiciones[ii][0] == 'O' && posiciones[ii][1] == 'O' && posiciones[ii][2] == 'O') { //Comprueba si se han alineado O
-							ganaJ1 = true;
+							ganaJ1 = true; //Indica que ha ganado el jugador 1
 						}
 						if (posiciones[ii][0] == 'X' && posiciones[ii][1] == 'X' && posiciones[ii][2] == 'X') { //Comprueba si se han alienado X
-							ganaJ2 = true;
+							ganaJ2 = true; //Indica que ha ganado el jugador 2
 						}
 						
 						//Revisa si se han alineado X o O verticalmente
 						if (posiciones[0][ii] == 'O' && posiciones[1][ii] == 'O' && posiciones[2][ii] == 'O') { //Comprueba si se han alineado O
-							ganaJ1 = true;
+							ganaJ1 = true; //Indica que ha ganado el jugador 1
 						}
 						if (posiciones[0][ii] == 'X' && posiciones[1][ii] == 'X' && posiciones[2][ii] == 'X') { //Comprueba si se han alienado X
-							ganaJ2 = true;
+							ganaJ2 = true; //Indica que ha ganado el jugador 2
 						}
 						
 						//Revisa si se han alineado X o O diagonalmente
 						if (posiciones[0][0] == 'O' && posiciones[1][1] == 'O' && posiciones[2][2] == 'O') { //Comprueba si se han alineado O
-							ganaJ1 = true;
+							ganaJ1 = true; //Indica que ha ganado el jugador 1
 						}
 						if (posiciones[0][0] == 'X' && posiciones[1][1] == 'X' && posiciones[2][2] == 'X') { //Comprueba si se han alienado X
-							ganaJ2 = true;
+							ganaJ2 = true; //Indica que ha ganado el jugador 2
 						}
 						
 						//Revisa si se han alineado X o O diagonalmente en sentido opuesto
 						if (posiciones[2][0] == 'O' && posiciones[1][1] == 'O' && posiciones[0][2] == 'O') { //Comprueba si se han alineado O
-							ganaJ1 = true;
+							ganaJ1 = true; //Indica que ha ganado el jugador 1
 						}
 						if (posiciones[2][0] == 'X' && posiciones[1][1] == 'X' && posiciones[0][2] == 'X') { //Comprueba si se han alienado X
-							ganaJ2 = true;
+							ganaJ2 = true; //Indica que ha ganado el jugador 2
 						}	
 				}
 				
@@ -178,6 +178,8 @@ public class Tres_en_raya {
 			if (ganaJ1 || ganaJ2 || rev == 0) {break;} //Si alguno de los jugdores ha ganado o alguno de los jugadores (O ambos) han optado por no hacer revancha, finaliza el bucle de repetición de partida en caso de revancha.
 	
 		} //Fin del bucle while-true para repetir la partida en caso de revancha.
+		
+		System.out.println();
 		
 		for (int ii = 0; ii < posiciones.length; ii++) { //Muestra como ha quedado la tabla finalmente, al finalizar la partida.
 			for (int j = 0; j < posiciones.length; j++) {
